@@ -1,27 +1,57 @@
-// create function called computerPlay that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’.
 function computerPlay(){
-    let computerSelection = ['Rock','Paper','Scissors'];
+    let computerSelection = ['ROCK','PAPER','SCISSORS'];
     let randomIndex = computerSelection[Math.floor(Math.random() * 3)]; 
     return randomIndex;
 }
-//console log the above results/
-
 console.log (computerPlay());
 
-//playerSelection/
+
+let computerSelection = (computerPlay());
+
+
 let playerSelection = prompt("please choose rock, paper or scissors").toUpperCase();
 console.log(playerSelection);
 
 
 
-/*Write a function that plays a single round of Rock Paper Scissors. 
-The function should take two parameters - the playerSelection and computerSelection*/
-//function playRound (computerSelection, playerSelection) {
-    
+function playRound (computerSelection, playerSelection) {
+    if (computerSelection === playerSelection) {
+    alert(`tie! You both picked ${computerSelection}.`);
+     return ("0");
+} else if (computerSelection === 'ROCK' && playerSelection === 'SCISSORS'){
+    alert("you lose! Rock beats scissors.");
+    return ("-1");
+} else if (computerSelection === 'PAPER' && playerSelection === 'ROCK') {
+    alert("you lose! Paper beats rock.");
+    return ("-1");
+} else if (computerSelection === 'SCISSORS' && playerSelection=== 'PAPER') {
+    alert("you lose! Scissors beats paper.");
+    return ("-1");
+}else{    
+    alert(`you win! ${playerSelection} beats ${computerSelection}!`);
+    return ("1");
+
 }
+    }
+
+playRound(computerSelection, playerSelection);
 
 
-//return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
 
+function game () {
+    let playerScore = '0';
+    let computerScore = '0';
+    let roundResult = playRound(computerSelection, playerSelection);
 
-//Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
+    for (let counter = 0; counter <=5; ++counter) {
+        playRound();
+    if (roundResult === "1") {
+         ++playerScore;
+    }else if (roundResult=== "-1"){
+        ++computerScore;
+    }else {
+        return ('Tie.');
+    }
+}
+console.log(playerScore, computerScore);
+}
